@@ -8,6 +8,8 @@ const service = axios.create({
     timeout: 60000, // 请求超时时间
     transformRequest: [
         function (data) {
+            let token = sessionStorage.getItem('token');
+            data['sessionId'] = token;
             if (data !== undefined) {
                 data = Qs.stringify(data);
             }
